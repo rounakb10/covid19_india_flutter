@@ -22,3 +22,5 @@ doc/api/
 *.key.jks
 *.key.properties
 *.driveupload
+key.jks
+key.properties
