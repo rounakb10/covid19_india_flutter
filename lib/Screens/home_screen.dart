@@ -1,11 +1,11 @@
 import 'package:covidindiaflutter/Models/alldata_model.dart';
 import 'package:covidindiaflutter/Screens/district_screen.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import 'package:covidindiaflutter/theme_changer.dart';
 import 'package:flutter/material.dart';
-import 'package:covidindiaflutter/Models/state_model.dart';
+//import 'package:covidindiaflutter/Models/state_model.dart';
 import 'package:morpheus/morpheus.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<int> overall = new List(5);
   List<int> daily = new List(4);
   bool isSortedByTotal = false;
-  StateModel model = StateModel();
+  //StateModel model = StateModel();
   PageController controller;
 
   @override
@@ -234,6 +234,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 horizontal: 8.0, vertical: 6.0),
                     child: ListTile(
                       onTap: () {
+//                        Scaffold.of(context).showSnackBar(
+//                          SnackBar(
+//                            content: Text('OK'),
+//                          ),
+//                        );
                         if (getStateCodeFromName(stateName[index]) != '') {
                           setState(() {
                             Navigator.push(

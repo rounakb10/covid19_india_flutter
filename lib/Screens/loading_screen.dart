@@ -33,23 +33,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     }));
   }
 
-//  void getDistrictData(String stateCode) async {
-////    DistrictModel districtModel = DistrictModel();
-////    var districtData = await districtModel.getData();
-//    Navigator.pushReplacement(
-//      context,
-//      MorpheusPageRoute(
-//        builder: (context) => DistrictScreen(
-//          //districtData: districtData,
-//          stateCode: stateCode,
-//          stateName: stateName,
-//          index: widget.index,
-//          allData: allData,
-//        ),
-//      ),
-//    );
-//  }
-
   @override
   Widget build(BuildContext context) {
     ThemeData _themeData = Provider.of<ThemeChanger>(context).getTheme;
@@ -66,16 +49,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 color: Colors.transparent,
                 child: Text(
                   'Covid 19',
-                  style: TextStyle(fontSize: 35),
+                  style: TextStyle(fontSize: 40),
                   textAlign: TextAlign.center,
                 ),
               )),
           SizedBox(
             height: 35,
           ),
-          SpinKitFadingCube(
+          SpinKitDoubleBounce(
             color: spinnerColor,
-            size: 35.0,
+            size: 40.0,
           ),
         ],
       ),
