@@ -1,11 +1,9 @@
 import 'package:covidindiaflutter/Models/alldata_model.dart';
 import 'package:covidindiaflutter/Screens/district_screen.dart';
-//import 'package:flutter/services.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-
+//import 'package:animations/animations.dart';
 import 'package:covidindiaflutter/theme_changer.dart';
 import 'package:flutter/material.dart';
-//import 'package:covidindiaflutter/Models/state_model.dart';
 import 'package:morpheus/morpheus.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';

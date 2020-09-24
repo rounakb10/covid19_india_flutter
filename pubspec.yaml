@@ -19,6 +19,7 @@ dependencies:
   flutter_spinkit: ^4.1.2
   morpheus: ^1.2.2+1
   liquid_pull_to_refresh: ^2.0.0
+  animations: ^1.1.2
 
 dev_dependencies:
   flutter_test:
