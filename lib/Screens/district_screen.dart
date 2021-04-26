@@ -130,15 +130,12 @@ class _DistrictScreenState extends State<DistrictScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Hero(
-          tag: 'stateName' + _index,
-          child: Material(
-            color: Colors.transparent,
-            child: Text(
-              stateName,
-              style: TextStyle(fontSize: 22),
-              textAlign: TextAlign.center,
-            ),
+        title: Material(
+          color: Colors.transparent,
+          child: Text(
+            stateName,
+            style: TextStyle(fontSize: 22),
+            textAlign: TextAlign.center,
           ),
         ),
       ),

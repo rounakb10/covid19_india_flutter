@@ -56,7 +56,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           SizedBox(
             height: 35,
           ),
-          SpinKitDoubleBounce(
+          SpinKitThreeBounce(
             color: spinnerColor,
             size: 40.0,
           ),

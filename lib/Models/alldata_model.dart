@@ -1,6 +1,6 @@
 import '../Utilities/networking.dart';
 
-const url = 'https://api.covid19india.org/v3/data.json';
+const url = 'https://api.covid19india.org/v4/data.json';
 
 class AllDataModel {
   Future<dynamic> getData() async {

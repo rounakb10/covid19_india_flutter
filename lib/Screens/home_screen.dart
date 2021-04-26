@@ -25,9 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
   List<int> discharged;
   List<int> total;
   List<int> tested;
+  List<int> vaccinated;
   List<String> stateName;
 
-  List<int> overall = new List(5);
+  List<int> overall = new List(6);
   List<int> daily = new List(4);
   bool isSortedByTotal = false;
   //StateModel model = StateModel();
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       discharged = new List(size);
       stateName = new List(size);
       tested = new List(size);
+      vaccinated = new List(size);
 
       for (int i = 0; i < size; i++) {
         try {
@@ -98,18 +100,28 @@ class _HomeScreenState extends State<HomeScreen> {
           tested[i] = 0;
         }
 
+        try {
+          vaccinated[i] = allData[getStateCodeFromIndex(i)]['total']
+                  ['vaccinated']
+              .toDouble()
+              .toInt();
+        } catch (e) {
+          print(e);
+          vaccinated[i] = 0;
+        }
+
         stateName[i] = getStateNameFromCode(getStateCodeFromIndex(i));
       }
-
+      overall[0] = allData['TT']['total']['confirmed'].toDouble().toInt();
       overall[1] = allData['TT']['total']['recovered'].toDouble().toInt();
       overall[2] = allData['TT']['total']['deceased'].toDouble().toInt();
-      overall[0] = allData['TT']['total']['confirmed'].toDouble().toInt();
-      overall[4] = allData['TT']['total']['tested'].toDouble().toInt();
       overall[3] = overall[0] - overall[1] - overall[2];
+      overall[4] = allData['TT']['total']['tested'].toDouble().toInt();
+      overall[5] = allData['TT']['total']['vaccinated'].toDouble().toInt();
 
+      daily[0] = allData['TT']['delta']['confirmed'].toDouble().toInt();
       daily[1] = allData['TT']['delta']['recovered'].toDouble().toInt();
       daily[2] = allData['TT']['delta']['deceased'].toDouble().toInt();
-      daily[0] = allData['TT']['delta']['confirmed'].toDouble().toInt();
       daily[3] = daily[0] - daily[1] - daily[2];
     });
   }
@@ -281,8 +293,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             '\nActive: ' +
                             (total[index] - discharged[index] - deaths[index])
                                 .toString() +
+                            getDelta('active', index) +
                             '\nTested: ' +
-                            tested[index].toString(),
+                            tested[index].toString() +
+                            '\nVaccinated: ' +
+                            vaccinated[index].toString(),
                         style: TextStyle(
                           fontSize: 18,
                           color: subtitleText,
@@ -318,13 +333,16 @@ class _HomeScreenState extends State<HomeScreen> {
         onRefresh: () async {
           await refreshHome(context, 1);
         },
-        child: ListView.builder(
+        child: GridView.builder(
+          gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           //physics: BouncingScrollPhysics(),
           itemCount: overall.length,
           itemBuilder: (context, index) {
-            return AnimationConfiguration.staggeredList(
+            return AnimationConfiguration.staggeredGrid(
               position: index,
               duration: const Duration(milliseconds: 310),
+              columnCount: 2,
               child: SlideAnimation(
                 verticalOffset: 50.0,
                 child: FadeInAnimation(
@@ -333,30 +351,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    margin: index == 0
+                    margin: index == 0 || index == 1
                         ? EdgeInsets.only(
-                            left: 8.0, right: 8.0, top: 11.0, bottom: 6.0)
-                        : EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+                            left: 6.0, right: 6.0, top: 16.0, bottom: 6.0)
+                        : EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
                     child: ListTile(
                       title: Text(
                         index == 0
-                            ? 'Total'
+                            ? '\nTotal'
                             : index == 1
-                                ? 'Recovered'
+                                ? '\nRecovered'
                                 : index == 2
-                                    ? 'Deaths'
-                                    : index == 3 ? 'Active' : 'Tested',
+                                    ? '\nDeaths'
+                                    : index == 3
+                                        ? '\nActive'
+                                        : index == 4
+                                            ? '\nTested'
+                                            : '\nVaccinated',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w400),
                       ),
                       subtitle: Text(
-                        index == 3 || index == 4
-                            ? overall[index].toString()
-                            : overall[index].toString() +
-                                ' (+' +
-                                daily[index].toString() +
-                                ')',
+                        index == 3
+                            ? '\n' + overall[index].toString()
+                            : index == 4 || index == 5
+                                ? '\n' + overall[index].toString()
+                                : '\n' +
+                                    overall[index].toString() +
+                                    ' (+' +
+                                    daily[index].toString() +
+                                    ')',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20, letterSpacing: 1.1),
                       ),
@@ -400,6 +425,21 @@ class _HomeScreenState extends State<HomeScreen> {
       typeNumber = 1;
     }
     try {
+      if (type == 'active') {
+        int act = int.parse(widget.dailyData['states_daily'][size - 3]
+                [getStateCodeFromName(stateName[index]).toLowerCase()]) -
+            int.parse(widget.dailyData['states_daily'][size - 2]
+                [getStateCodeFromName(stateName[index]).toLowerCase()]) -
+            int.parse(widget.dailyData['states_daily'][size - 1]
+                [getStateCodeFromName(stateName[index]).toLowerCase()]);
+        if (act > 0)
+          return '(+' + act.toString() + ')';
+        else if (act < 0)
+          return '(' + act.toString() + ')';
+        else
+          return '';
+      }
+
       if (getStateCodeFromName(stateName[index]) != null &&
           widget.dailyData['states_daily'][size - typeNumber]
                       [getStateCodeFromName(stateName[index]).toLowerCase()]
@@ -452,6 +492,10 @@ class _HomeScreenState extends State<HomeScreen> {
         int temp5 = tested[i];
         tested[i] = tested[j];
         tested[j] = temp5;
+
+        int temp6 = vaccinated[i];
+        vaccinated[i] = vaccinated[j];
+        vaccinated[j] = temp6;
       }
     }
 
@@ -474,6 +518,10 @@ class _HomeScreenState extends State<HomeScreen> {
     int temp5 = tested[i + 1];
     tested[i + 1] = tested[high];
     tested[high] = temp5;
+
+    int temp6 = vaccinated[i + 1];
+    vaccinated[i + 1] = vaccinated[high];
+    vaccinated[high] = temp6;
 
     return i + 1;
   }
@@ -511,6 +559,10 @@ class _HomeScreenState extends State<HomeScreen> {
         int temp5 = tested[i];
         tested[i] = tested[j];
         tested[j] = temp5;
+
+        int temp6 = vaccinated[i];
+        vaccinated[i] = vaccinated[j];
+        vaccinated[j] = temp6;
       }
     }
 
@@ -533,6 +585,10 @@ class _HomeScreenState extends State<HomeScreen> {
     int temp5 = tested[i + 1];
     tested[i + 1] = tested[high];
     tested[high] = temp5;
+
+    int temp6 = vaccinated[i + 1];
+    vaccinated[i + 1] = vaccinated[high];
+    vaccinated[high] = temp6;
 
     return i + 1;
   }
