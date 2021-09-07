@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
       overall[2] = allData['TT']['total']['deceased'].toDouble().toInt();
       overall[3] = overall[0] - overall[1] - overall[2];
       overall[4] = allData['TT']['total']['tested'].toDouble().toInt();
-      overall[5] = allData['TT']['total']['vaccinated'].toDouble().toInt();
+      // overall[5] = allData['TT']['total']['vaccinated'].toDouble().toInt();
 
       daily[0] = allData['TT']['delta']['confirmed'].toDouble().toInt();
       daily[1] = allData['TT']['delta']['recovered'].toDouble().toInt();
@@ -243,6 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             : EdgeInsets.symmetric(
                                 horizontal: 8.0, vertical: 6.0),
                     child: ListTile(
+                      contentPadding: EdgeInsets.fromLTRB(0, 2, 0, 6),
                       onTap: () {
 //                        Scaffold.of(context).showSnackBar(
 //                          SnackBar(
@@ -295,9 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .toString() +
                             getDelta('active', index) +
                             '\nTested: ' +
-                            tested[index].toString() +
-                            '\nVaccinated: ' +
-                            vaccinated[index].toString(),
+                            tested[index].toString(),
                         style: TextStyle(
                           fontSize: 18,
                           color: subtitleText,

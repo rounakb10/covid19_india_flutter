@@ -3,10 +3,16 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7af2e4d0-78ca-4a43-88f4-8d25ce47b9ca" name="Default Changelist" comment="Second Commit">
+    <list default="true" id="7af2e4d0-78ca-4a43-88f4-8d25ce47b9ca" name="Default Changelist" comment="june 2021">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/release-apk/app-release.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,13 +32,13 @@
   <component name="ProjectId" id="1dalLDvZqGVgFE8BxJ5w3s2CPrZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -47,6 +53,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -65,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600118836401</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="june 2021">
+      <created>1624485776167</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1624485776167</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -73,36 +87,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Second Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second Commit" />
+    <MESSAGE value="june 2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="june 2021" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1618826633658">
+    <state x="331" y="0" key="CommitChangelistDialog2" timestamp="1631002957329">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1618826633658" />
-    <state x="331" y="12" key="CommitChangelistDialog2" timestamp="1618826615963">
+    <state x="331" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1631002957329" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1624485781260">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="331" y="12" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1618826615963" />
-    <state width="1491" height="188" key="GridCell.Tab.0.bottom" timestamp="1618655452356">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1618655452356" />
-    <state width="1491" height="188" key="GridCell.Tab.0.center" timestamp="1618655452356">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1618655452356" />
-    <state width="1491" height="188" key="GridCell.Tab.0.left" timestamp="1618655452355">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1618655452355" />
-    <state width="1491" height="188" key="GridCell.Tab.0.right" timestamp="1618655452356">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1618655452356" />
-    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1618597959929">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.834@0.0.1536.834" timestamp="1618597959929" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1624485781260" />
   </component>
 </project>
